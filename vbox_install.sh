@@ -3,10 +3,15 @@
 NAME=$1
 #MEM=$2 #:-1024}
 #HDD=$3 #:-50240}
+
 # Add the ISOs names to be created.
-# To add .ova use the vbox_install_ova script.
-ISO="Win10_21H1_English_x64.iso"
+# To add .ova/ovf use the vbox_install_ova.sh script.
+# For vdi images use the vbox_install_vdi.sh script.
+# Add the new ISO to the variable list below and comment out the others.
+
+#ISO="Win10_21H1_English_x64.iso"
 #ISO="ubuntu-20.04.3-desktop-amd64.iso"
+ISO="ubuntu-20.04.3-live-server-amd64.iso"
 #ISO="CentOS.vdi"
 #ISO="kali-linux-2022.2-virtualbox-amd64.ova"
 
@@ -37,7 +42,7 @@ sudo vboxmanage storageattach $NAME \
 
 sudo vboxmanage storageattach $NAME \
     --storagectl SATA --port 15 --type dvddrive \
-    --medium /tmp/$ISO
+    --medium $ISO
 
 
 ##############\
