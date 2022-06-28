@@ -11,26 +11,27 @@ NAME=$1
 
 #ISO="Win10_21H1_English_x64.iso"
 #ISO="ubuntu-20.04.3-desktop-amd64.iso"
-ISO="ubuntu-20.04.3-live-server-amd64.iso"
-#ISO="CentOS.vdi"
-#ISO="kali-linux-2022.2-virtualbox-amd64.ova"
+#ISO="ubuntu-20.04.3-live-server-amd64.iso"
+#ISO="ubuntu-22.04.iso"
+ISO="kali-linux-2022.2-installer-amd64.iso"
 
 sudo mkdir -p /srv/virtualbox\
 
 sudo vboxmanage createvm \
-    --ostype Ubuntu_64 \
+    --ostype Debian_64 \
     --basefolder "/srv/virtualbox" \
     --register \
     --name "$NAME"
 
 sudo vboxmanage modifyvm $NAME \
-    --memory 1024 \
+    --memory 4024 \
     --nic1 nat \
-    --vrde on --vrdeport 33890
+    --vrde on --vrdeport 33890 \
+    --cpus 4
 
 sudo vboxmanage createhd \
     --filename "/srv/virtualbox/$NAME/$NAME.vdi" \
-    --format VDI --size 20240 
+    --format VDI --size 40240 
 
 sudo vboxmanage storagectl $NAME \
     --name "SATA" \
@@ -42,7 +43,7 @@ sudo vboxmanage storageattach $NAME \
 
 sudo vboxmanage storageattach $NAME \
     --storagectl SATA --port 15 --type dvddrive \
-    --medium $ISO
+    --medium ~/Downloads/$ISO
 
 
 ##############\
