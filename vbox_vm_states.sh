@@ -13,6 +13,7 @@ echo "5. Savestate - saves the current state of the VM to disk and then stops th
 echo "6. ACPIPowerButton - performs a computer shutdown, like power button pressed on a real computer"
 echo "7. PowerOn - PowerOn the VM"
 echo "8. EXIT"
+echo "100. Unregister and delete VM"
 echo ""
 echo -n "Enter the number of your selection: "
 read NUMBER
@@ -44,6 +45,9 @@ case $NUMBER in
         ;;
     7)
         sudo vboxmanage startvm $VMNAME --type headless
+        ;;
+    100)
+        sudo vboxmanage unregistervm $VMNAME --delete
         ;;
     *)
         echo "EXIT"

@@ -6,8 +6,10 @@ NAME=$1
 #HDD=$3 #:-50240}
 # Add the ISOs names to be created.
 # To add .ova use the vbox_install_ova script.
-#VDI="Kali2022.1.vdi"
-#VDI="Kali2022.1.vdi"
+#VDI="../../Downloads/Kali2018.2.vdi"
+VDI="../../Downloads/ubuntu20.04.4.vdi"
+#VDI="../../Downloads/Kali2022.1.vdi"
+#VDI="../../Downloads/Kali2021.4a.vdi"
 #VDI="OpenSuse15.3.vdi"
 #VDI="CentOS7-1804.vdi"
 
